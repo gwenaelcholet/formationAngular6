@@ -5,3 +5,6 @@
 <pre *ngIf="!error">
   {{roverList$ |async |json}}
 </pre>
+
+<app-rover-item *ngFor="let rover of roverList$ |async"
+    [roverItem]="rover"></app-rover-item>
