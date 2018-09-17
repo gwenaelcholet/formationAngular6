@@ -1,6 +1,7 @@
 <div class="item">
   <div class="photo">
-    <img [src] = "roverItem.img_src">
+    <img [src] = "roverItem.img_src"
+          (click)="select.emit(roverItem)">
   </div>
   <div class="label">{{roverItem.name}}</div>
 </div>

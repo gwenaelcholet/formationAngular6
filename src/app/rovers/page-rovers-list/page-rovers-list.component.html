@@ -7,4 +7,7 @@
 </pre>
 
 <app-rover-item *ngFor="let rover of roverList$ |async"
-    [roverItem]="rover"></app-rover-item>
+    [roverItem]="rover"
+                (select)="selected = $event"></app-rover-item>
+
+<pre>{{selected |json}}</pre>

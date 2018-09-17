@@ -13,6 +13,7 @@ export class PageRoversListComponent implements OnInit {
 
   error: any;
   roverList$: Observable<Rover[]>;
+  selected: Rover;
   // private subscription: Subscription;
 
   constructor(private roverService: RoversService) { }
