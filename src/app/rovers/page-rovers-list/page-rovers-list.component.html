@@ -1,0 +1,7 @@
+<p *ngIf="error">
+  {{error |json}}
+</p>
+
+<pre *ngIf="!error">
+  {{roverList$ |async |json}}
+</pre>
