@@ -10,4 +10,5 @@
     [roverItem]="rover"
                 (select)="selected = $event"></app-rover-item>
 
-<pre>{{selected |json}}</pre>
+<app-rover-details [roverDetail]="selected"
+                   *ngIf="selected"></app-rover-details>
