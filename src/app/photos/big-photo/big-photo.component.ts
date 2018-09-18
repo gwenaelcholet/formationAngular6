@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable, Subscription} from 'rxjs';
+import {Photo} from '../../core/model/model';
+import {PhotosService} from '../../core/services/photos.service';
+import {ActivatedRoute} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-big-photo',
@@ -7,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BigPhotoComponent implements OnInit {
 
-  constructor() { }
+  photo$: Observable<Photo>;
+
+  constructor(private photos: PhotosService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.photo$ = this.route.paramMap
+      .pipe(
+        switchMap(params => this.photos.get(+params.get('id')))
+      );
   }
 
 }

@@ -22,4 +22,9 @@ export class PhotosService {
     return this.http.get<Photo[]>(url);
   }
 
+  get(id: number): Observable<Photo> {
+    const url = 'http://localhost:3390/photos/' + id;
+    return this.http.get<Photo>(url);
+  }
+
 }
