@@ -1,8 +1,11 @@
 <div class="item">
   <div class="photo">
-    <a href="http://localhost:3390/images/photos/0100MR0006680070104470E01_DXXX.jpg" target="_blank">
-      <img src="http://localhost:3390/images/photos/0100MR0006680070104470E01_DXXX.jpg">
+    <a [routerLink]="['/photos', photo.id]">
+      <img [src]="photo.img_src">
     </a>
   </div>
-  <div class="label">Curiosity / MAST / sol:100 / id:494298</div>
+  <div class="label"> {{photo.rover.name}}
+    / {{photo.camera.name}}
+    / {{photo.id}}</div>
+  <!-- div class="label">Curiosity / MAST / sol:100 / id:494298</div -->
 </div>

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {RoversService} from '../../core/services/rovers.service';
 import {Observable} from 'rxjs';
 import {Camera, Rover} from '../../core/model/model';
 
-interface SearchFormData {
+export interface SearchFormData {
   rover?: Rover;
   camera?: Camera;
   sol?: number;
@@ -16,6 +16,7 @@ interface SearchFormData {
 })
 export class PhotoSearchFormComponent implements OnInit {
 
+  @Output() search = new EventEmitter<SearchFormData>();
   roverList$: Observable<Rover[]>;
 
   // data = {rover?: Rover, camera?: Camera, sol?: number} = {};
@@ -25,6 +26,10 @@ export class PhotoSearchFormComponent implements OnInit {
 
   ngOnInit() {
     this.roverList$ = this.roverService.list();
+  }
+
+  onSubmit(): void {
+    this.search.emit(this.data);
   }
 
 }

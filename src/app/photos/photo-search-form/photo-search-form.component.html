@@ -1,4 +1,5 @@
-<form #formInfo="ngForm"> {{formInfo.valid}}
+<form #formInfo="ngForm"
+    (ngSubmit)="onSubmit()">
 
   Rover :
   <select name="rover"
