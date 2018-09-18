@@ -1,0 +1,36 @@
+<form>
+
+  Rover :
+  <select name="rover"
+    [(ngModel)]="data.rover"
+    (ngModelChange)="data.camera = undefined"
+    required>
+    <option [ngValue]="undefined"></option>
+    <option *ngFor="let rover of roverList$ |async"
+            [ngValue]="rover">
+        {{rover.name}}
+    </option>
+  </select>
+
+  Caméra :
+  <select name="camera"
+    [(ngModel)]="data.camera">
+    <option [ngValue]="undefined"></option>
+    <option *ngFor="let camera of data.rover?.cameras"
+        [ngValue]="camera">
+      {{camera.name}}
+    </option>
+  </select>
+
+  Sol :
+  <input type="number" name="sol"
+         [(ngModel)]="data.sol">
+
+  <!-- Syntax similaire à au dessus laquelle est plus courte
+  <input type="number" name="sol"
+         [ngModel]="data.sol"
+         (ngModelChange)="data.sol = $event"> -->
+
+  <button>Rechercher</button>
+  
+</form>
