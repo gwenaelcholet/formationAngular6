@@ -1,10 +1,11 @@
-<form>
+<form #formInfo="ngForm"> {{formInfo.valid}}
 
   Rover :
   <select name="rover"
     [(ngModel)]="data.rover"
     (ngModelChange)="data.camera = undefined"
-    required>
+    required
+  #roverInfo="ngModel">
     <option [ngValue]="undefined"></option>
     <option *ngFor="let rover of roverList$ |async"
             [ngValue]="rover">
@@ -25,12 +26,16 @@
   Sol :
   <input type="number" name="sol"
          [(ngModel)]="data.sol">
+      {{data.sol}}
 
   <!-- Syntax similaire à au dessus laquelle est plus courte
   <input type="number" name="sol"
          [ngModel]="data.sol"
          (ngModelChange)="data.sol = $event"> -->
 
-  <button>Rechercher</button>
-  
+  <button [disabled]="formInfo.invalid"
+      type="submit">Rechercher</button>
+
+  <span *ngIf="roverInfo.invalid">Vous devez choisir un rover</span>
+
 </form>
